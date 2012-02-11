@@ -7,14 +7,14 @@ from pprint import pprint
 
 #conf
 entrance = '/usr/share/gnome-background-properties/wall_paper.xml'
-context = 'context.xml'
-paths = ['/usr/share/backgrounds/*']
-formats = ['jpg','png']
+doctype = ['wallpapers',None,'gnome-wp-list.dtd'}
 auto_only = True
 
-doctype = ['wallpapers',None,'gnome-wp-list.dtd'}
+paths = ['/usr/share/backgrounds/*']
+context = 'context.xml'
+formats = ['jpg','png']
 
-#generate
+#find wallpapers
 import glob
 papers = []
 for path in paths:
@@ -31,3 +31,5 @@ for paper in papers:
         context[names[0]] = []
     context[names[0]].append({'name':fname,'filename':paper}) 
 #pprint(context)
+
+#generate confs
