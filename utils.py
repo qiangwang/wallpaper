@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#@todo:dtd declaration and attribute
+#@todo:dtd declaration,attribute,comment
 
 from xml.dom.minidom import Document
 
