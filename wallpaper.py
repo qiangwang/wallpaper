@@ -12,6 +12,8 @@ paths = ['/usr/share/backgrounds/*']
 formats = ['jpg','png']
 auto_only = True
 
+doctype = ['wallpapers',None,'gnome-wp-list.dtd'}
+
 #generate
 import glob
 papers = []
