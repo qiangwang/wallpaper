@@ -5,6 +5,6 @@ doctype = ['wallpapers',None,'gnome-wp-list.dtd']
 auto_only = True
 
 paths = ['/usr/share/backgrounds/*']
-context = 'context.xml'
 formats = ['jpg','png']
+duration = 5
 
