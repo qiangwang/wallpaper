@@ -50,6 +50,12 @@ for dpath in contexts:
         transition = {'transition':{'duration':conf.duration,'from':papers[i-1]['paper'],'to':papers[i]['paper']}}
         context['background'].append(static)
         context['background'].append(transition)
+        
+        #generate wallpaper
+        if conf.static:
+            wallpaper = {'wallpaper':{'name':papers[i]['name'],'filename':papers[i]['paper'],'options':'zoom','pcolor':'#000000','scolor':'#000000','shade_type':'solid'}}
+            wallpapers['wallpapers'].append(wallpaper)
+            
         i += 1
 
     #print(dx.dict_to_xml(context));quit()
@@ -60,9 +66,10 @@ for dpath in contexts:
     
     print(filename)
     
-     #generate wallpaper
-    wallpaper = {'wallpaper deleted=false':{'name':contexts[dpath]['name'],'filename':filename,'options':'zoom'}}
-    wallpapers['wallpapers'].append(wallpaper)
+    #generate wallpaper
+    if conf.transition:
+        wallpaper = {'wallpaper deleted=false':{'name':contexts[dpath]['name'],'filename':filename,'options':'zoom'}}
+        wallpapers['wallpapers'].append(wallpaper)
 
 print('entrance:')
 

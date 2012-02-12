@@ -31,7 +31,8 @@ class Dict_To_XML:
             for ele in self.to_xml(doc,dic[root_name]):
                 root.appendChild(ele)
         
-        return doc.toprettyxml(indent=self.indent)
+        #@todo: toprettyxml will change textnode
+        return doc.toxml()
     
     def to_xml(self,doc,seq,alone=True):
         eles = []
