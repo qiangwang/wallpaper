@@ -1,1 +1,22 @@
-a small tool wrote in python to manage ubuntu's wallpaper 
+Name:
+  WallPaper Tool
+
+Description:
+  A small tool wrote in python to manage ubuntu's wallpaper
+
+Usage:
+  cd (program dir)
+  sudo ./wallpaper.py
+
+Configuration:
+  conf.py
+
+Requirements:
+  Ubuntu11+
+  Python3+
+
+About Implementation:
+  /usr/share/gnome-background-properties/wallpapers.xml
+    define paths of wallpapers
+  [pic_path]/[folder_name].xml
+    define transition between wallpapers
