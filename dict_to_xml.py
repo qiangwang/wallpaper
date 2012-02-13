@@ -6,7 +6,6 @@ class Dict_To_XML:
 
     def __init__(self):
         self.doctype = None
-        self.indent = '    '
         self.name_sep = ' '
         self.attr_sep = '='
     

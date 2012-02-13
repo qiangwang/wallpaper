@@ -40,36 +40,44 @@ dx = Dict_To_XML()
 print('contexts:')
 
 for dpath in contexts:
-    #generate context
-    context = context_template.copy()
     papers = contexts[dpath]['papers']
     
-    i = 0
-    while i < len(papers):
-        static = {'static':{'duration':1795,'file':papers[i]['paper']}}
-        transition = {'transition':{'duration':conf.duration,'from':papers[i-1]['paper'],'to':papers[i]['paper']}}
-        context['background'].append(static)
-        context['background'].append(transition)
-        
+    if conf.transition:
+        #generate context
+        context = context_template.copy()
+    
+        i = 0
+        while i < len(papers):
+            static = {'static':{'duration':1795,'file':papers[i]['paper']}}
+            transition = {'transition':{'duration':conf.duration,'from':papers[i-1]['paper'],'to':papers[i]['paper']}}
+            context['background'].append(static)
+            context['background'].append(transition)
+            
+            i += 1
+
+        #print(dx.dict_to_xml(context));quit()
+        filename = dpath+'/'+contexts[dpath]['name']+'.xml'
+        f = open(filename,'w')
+        f.write(dx.dict_to_xml(context))
+        f.close()
+    
+        print(filename)
+    
         #generate wallpaper
-        if conf.static:
+    
+        wallpaper = {'wallpaper deleted=false':{'name':contexts[dpath]['name'],'filename':filename,'options':'zoom'}}
+        wallpapers['wallpapers'].append(wallpaper)
+    
+    #generate wallpaper
+    if conf.static:
+        i = 0
+        
+        while i < len(papers):
             wallpaper = {'wallpaper':{'name':papers[i]['name'],'filename':papers[i]['paper'],'options':'zoom','pcolor':'#000000','scolor':'#000000','shade_type':'solid'}}
             wallpapers['wallpapers'].append(wallpaper)
             
-        i += 1
-
-    #print(dx.dict_to_xml(context));quit()
-    filename = dpath+'/'+contexts[dpath]['name']+'.xml'
-    f = open(filename,'w')
-    f.write(dx.dict_to_xml(context))
-    f.close()
-    
-    print(filename)
-    
-    #generate wallpaper
-    if conf.transition:
-        wallpaper = {'wallpaper deleted=false':{'name':contexts[dpath]['name'],'filename':filename,'options':'zoom'}}
-        wallpapers['wallpapers'].append(wallpaper)
+            i += 1
+        
 
 print('entrance:')
 
